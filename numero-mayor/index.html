@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Número Mayor</title>
+</head>
+<body>
+
+  <p>Número mayor</p>
+
+  <form id="form">
+    <input type="text" id="entry1" placeholder="1" autocomplete="off">
+    <input type="text" id="entry2" placeholder="2" autocomplete="off">
+    <button>Result</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+
+    const form = document.getElementById('form');
+    const result = document.getElementById('result');
+
+    form.addEventListener('submit', e => {
+
+      e.preventDefault();
+
+      const entry1 = parseInt(document.getElementById('entry1').value);
+      const entry2 = parseInt(document.getElementById('entry2').value);
+
+      if (entry1 > entry2) {
+
+        console.log(`${entry1} es mayor`)
+        // result.textContent = `${entry1} es mayor`;
+
+      } else {
+
+        console.log(`${entry2} es mayor`)
+        // result.textContent = `${entry2} es mayor`;
+
+      }
+
+      form.reset();
+
+    })
+  </script>
+</body>
+</html>

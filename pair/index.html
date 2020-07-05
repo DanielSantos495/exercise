@@ -22,7 +22,7 @@
     numberForm.addEventListener('submit', e => {
 
       e.preventDefault();
-      const number = document.getElementById('number').value;
+      const number = parseInt(document.getElementById('number').value);
       const result = document.getElementById('result');
 
       const validatePair = number % 2;
