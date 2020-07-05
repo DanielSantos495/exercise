@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prime</title>
+</head>
+<body>
+
+  <p>Do you number is prime? Or not?</p>
+
+  <form action="" id="form">
+    <input type="text" id="number" autocomplete="off">
+  </form>
+
+  <div id="result">
+  </div>
+
+
+  <script>
+
+    const form = document.getElementById('form');
+
+    form.addEventListener('submit', e => {
+
+      e.preventDefault();
+
+      const number = parseInt(document.getElementById('number').value);
+      const resultId =  document.getElementById('result');
+      const validatePair = number % 2;
+      let resultSave = [];
+
+      if (number === 1) {
+
+        resultId.textContent = `El ${number} es el unico número que no pertenece a los conjuntos de pares y primos`;
+        form.reset();
+
+        return;
+
+      } else if (number === 2) {
+
+        resultId.textContent = `El ${number} es el unico número primo y par al tiempo`;
+        form.reset();
+
+        return;
+
+
+      } else if (validatePair === 0) {
+
+        resultId.textContent = `${number} NO ES PRIMO`;
+        console.log('NO ES PRIMO');
+
+
+      } else if (number) {
+        //El número 1 no es primo ni compuesto
+        const listNum = [1,2,3,4,5,6,7,8,9,10];
+
+        listNum.map(num => {
+          //Dividimos cada input con número del 1 al 10 y si como resultado dan 3 o más enteros no es primo
+          const result = number / num;
+          const interger = result === Number.parseInt(result);
+
+          if (interger === true) {
+
+            console.log(`${result}`);
+
+            resultSave.push(result);
+
+          }
+
+        });
+
+      }
+      //si el input es mayor a 10 y sale el mismo número de input ES PRIMO
+      //si el input es menor a 10 y sale el número de input y el 1 ES PRIMO
+
+      //si el input es mayor a 10 y sale el número del input y otro número  NO ES PRIMO
+      // si el input es meno a 10 y sale el número del input el 1 y otro número
+
+      //todos los número par ya estan validados como NO PRIMOS
+
+      if(number <= 10 && resultSave.length <= 2 && resultSave.length > 0 ) {
+
+        resultId.textContent = `${number} ES PRIMO`;
+        console.log(resultSave.length);
+
+      } else if (number <= 10 && resultSave.length <= 3) {
+
+        resultId.textContent = `${number} NO ES PRIMO`;
+        console.log(resultSave.length);
+
+      } else if (number > 10 && resultSave.length === 1) {
+
+        resultId.textContent = `${number} ES PRIMO`;
+        console.log(resultSave.length);
+
+      } else if (number > 10 && resultSave.length >= 2) {
+
+        resultId.textContent = `${number} NO ES PRIMO`;
+        console.log(resultSave.length);
+
+      }
+
+
+      //borra el form
+      form.reset();
+
+    });
+
+  </script>
+</body>
+</html>

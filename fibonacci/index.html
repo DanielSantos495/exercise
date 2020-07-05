@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serie de Fibonacci</title>
+</head>
+<body>
+
+  <p>20 números de la Serie de Fibonacci</p>
+
+
+  <div id="result">
+
+  </div>
+
+  <script>
+
+    const result = document.getElementById('result');
+    //0,1,1,2,3,5,8,13,21,34
+
+    function fibonacci() {
+
+      let a = 0;
+      let b = 1;
+
+      const serie = [];
+      let i = 0;
+      while(i < 20) {
+
+        let nexNum = a + b;
+        a = b;
+        b = nexNum;
+
+        serie.push(nexNum);
+
+        result.textContent = serie.join(', ');
+
+        i++;
+
+      }
+
+
+
+    }
+
+    fibonacci();
+  </script>
+</body>
+</html>

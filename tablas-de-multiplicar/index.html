@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tablas de múltiplicar</title>
+
+  <style>
+
+    .tables {
+      display: flex;
+      flex-direction: column;
+    }
+
+  </style>
+
+</head>
+<body>
+
+  <p>Do you want to know the multiplication tables from 1 to 10? Enter a number</p>
+
+  <form id="form">
+    <input type="text" id="number" autocomplete="off">
+  </form>
+
+  <div id="tables__container">
+
+  </div>
+  <script>
+
+    const form = document.getElementById('form');
+    const div = document.createElement('div');
+
+    function createComponent(attributeName, attributeValue, nodeRender, component) {
+
+      div.setAttribute(attributeName, attributeValue);
+      div.innerHTML = component;
+      nodeRender.append(div);
+
+    }
+
+    const tableComponent = (mul, result) => {
+
+      const view = `
+          <p>Número: ${mul}</p>
+
+          <span> ${mul}   x 1 = ${result[0]}</span>
+          <span> ${mul}   x 2 = ${result[1]}</span>
+          <span> ${mul}   x 3 = ${result[2]}</span>
+          <span> ${mul}   x 4 = ${result[3]}</span>
+          <span> ${mul}   x 5 = ${result[4]}</span>
+          <span> ${mul}   x 6 = ${result[5]}</span>
+          <span> ${mul}   x 7 = ${result[6]}</span>
+          <span> ${mul}   x 8 = ${result[7]}</span>
+          <span> ${mul}   x 9 = ${result[8]}</span>
+          <span> ${mul}   x 10 = ${result[9]} </span>
+        `;
+
+        return view;
+
+    };
+    const tables = document.getElementById('tables__container');
+
+    form.addEventListener('submit', e => {
+
+      e.preventDefault();
+
+      const number = document.getElementById('number').value;
+      const multiplicand = [1,2,3,4,5,6,7,8,9,10];
+      let result = [];
+
+      if (parseInt(number)) {
+
+      multiplicand.map(num => {
+
+        result.push(num * number);
+
+      });
+
+      createComponent('class', 'tables', tables, tableComponent(number, result));
+
+    } else {
+
+      createComponent(null, null, tables, 'Lo que pusiste no es un número');
+
+    }
+
+
+      form.reset();
+
+    });
+
+  </script>
+
+</body>
+</html>

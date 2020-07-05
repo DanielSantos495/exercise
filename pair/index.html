@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Número par/impar</title>
+</head>
+<body>
+  <p>Do you number is pair? Or not?</p>
+  <form id="numberForm">
+    <input type="text" id="number" autocomplete="off">
+  </form>
+
+  <div id="result">
+  </div>
+
+  <script>
+
+    const numberForm = document.getElementById('numberForm');
+
+
+    numberForm.addEventListener('submit', e => {
+
+      e.preventDefault();
+      const number = document.getElementById('number').value;
+      const result = document.getElementById('result');
+
+      const validatePair = number % 2;
+
+
+      if (validatePair === 0) {
+
+        result.textContent = 'Pair!';
+
+      } else {
+
+        result.textContent = 'Odd!';
+
+      }
+
+      numberForm.reset();
+
+    });
+
+  </script>
+</body>
+</html>

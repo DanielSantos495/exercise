@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadena Palíndroma</title>
+</head>
+<body>
+
+  <p>Do you want to know if yout text is palindrome?</p>
+
+  <form id="form" >
+    <input type="text" id="entry">
+  </form>
+
+  <div id="results">
+
+  </div>
+
+  <script>
+
+    const form = document.getElementById('form');
+    const result = document.getElementById('results');
+
+    form.addEventListener('submit', e => {
+
+      e.preventDefault();
+
+      const entry = document.getElementById('entry').value.toLowerCase()
+        .replace(/ /g, '').normalize('NFD').replace(/[\u0300-\u036f]/g,"");
+      const lengthInput = entry.length
+      const lenghtInputArray = [];
+      let palindrome;
+
+      for (let i = 0; i < lengthInput; i++) {
+
+        lenghtInputArray.push(i);
+
+      }
+
+      lenghtInputArray.map(char => {
+
+        const charReverse = char + 1;
+        palindrome = entry[char] === entry[lengthInput - charReverse]
+
+
+      })
+
+      if (palindrome) {
+
+        console.log('Es palindromo');
+        result.textContent = 'This text is palindrome';
+
+      } else {
+
+        console.log('This text isn`t palindrome');
+        result.textContent = 'This text isn`t palindrome';
+
+      }
+
+      form.reset();
+    });
+  </script>
+</body>
+</html>
