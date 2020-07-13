@@ -7,3 +7,4 @@
 5. Imprimir la serie de Fibonacci hasta un numero dado
 6. Qué número es mayor.
 7. Mínimo común múltiplo de 3 número maximo de 3 cifras c/u
+8. Área de un triangulo

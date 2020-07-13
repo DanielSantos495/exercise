@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Área de un triangulo</title>
+</head>
+<body>
+  <h1>Área de un triangulo</h1>
+  <p>Ingrese la medida de cada uno de sus lados</p>
+  <form action="" id="form">
+    <input type="text" id="height" placeholder="height" required>
+    <input type="text" id="left" placeholder="left" required>
+    <input type="text" id="right" placeholder="right" required>
+    <input type="text" id="base" placeholder="base" required>
+    <button>Calcular Área</button>
+  </form>
+
+  <p id="results"></p>
+  <p id="results2"></p>
+  <script>
+
+    /*
+     Área de un triangulo:
+
+      A = (b * h) / 2
+
+      Área de un triangulo por su lados a,b,c
+
+      Perimetro = a + b + c
+
+      semiperimetro (s) = perimetro / 2
+      Área = Raizcuadrada(s(s-a)(s-b)(s-c));
+
+    */
+
+
+    form.addEventListener('submit', (e) => {
+
+       e.preventDefault();
+
+      const height = parseInt(document.getElementById('height').value);
+      const left = parseInt(document.getElementById('left').value);
+      const right = parseInt(document.getElementById('right').value);
+      const base = parseInt(document.getElementById('base').value);
+      const results = document.getElementById('results');
+      const results2 = document.getElementById('results2');
+
+      const area = (base, height) => {
+
+        const area = base * height / 2;
+
+        return area;
+      }
+
+      //.toFixed(n) Define cuantos número decimales mostrar
+      results.textContent = `El área del triangulo es: ${area(base, height).toFixed(2)}`;
+      console.log(area(base, height));
+
+      if ( left === right && right === base) {
+        results2.textContent = 'Es un triangulo Equilatero';
+      } else if (left === right && right != base) {
+        results2.textContent = 'Es un triangulo Isólseles';
+      } else if (left != right && right != base) {
+        results2.textContent = 'Es un triangulo Escaleno';
+      }
+      form.reset();
+
+    });
+
+  </script>
+</body>
+</html>
