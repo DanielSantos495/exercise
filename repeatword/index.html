@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repeat the word</title>
+</head>
+<body>
+
+  <form action="" id="form">
+    <label for="">
+      Write a word
+      <input type="text" id="value">
+    </label>
+    <label for="">
+      repetitions
+      <input type="text" id="repeat">
+    </label>
+    <button>Calculate</button>
+  </form>
+
+    <div id="result"></div>
+  <script>
+
+    const form = document.getElementById('form');
+
+    function repeat(e) {
+
+      e.preventDefault();
+
+      const input = document.getElementById('value').value;
+      const repeat = parseInt(document.getElementById('repeat').value);
+
+      const result = document.getElementById('result');
+
+      const repeatAWord = (word, n) => {
+
+        if(n <= 0) {
+          return word;
+        } else {
+
+          return repeatAWord(word, n - 1) + ' ' + word + ' ';
+
+        }
+
+      }
+
+      result.textContent =  repeatAWord(input, repeat);
+
+      form.reset();
+    }
+
+    form.addEventListener('submit', repeat);
+  </script>
+</body>
+</html>

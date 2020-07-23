@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oclock</title>
+</head>
+<body>
+
+  <form action="" id="form">
+    <label>
+      Hours
+      <input type="text" id="hours" required>
+
+    </label>
+
+    <label for="">
+      Minutes
+      <input type="text" id="seconds" required>
+    </label>
+
+    <button>Calculate</button>
+  </form>
+
+  <div>
+    <div id="resultHour"></div>
+    <div id="resultMinute"></div>
+  </div>
+
+  <script>
+
+    const form = document.getElementById('form');
+
+    function calculateHoursAndSeconds(e) {
+
+      e.preventDefault();
+
+      const hoursValue = parseFloat(document.getElementById('hours').value);
+      const minutesValue = parseFloat(document.getElementById('seconds').value);
+
+      const resultHour = document.getElementById('resultHour');
+      const resultMinute = document.getElementById('resultMinute');
+
+      const calculate = (h, m) => {
+
+        const secondsInHour = 3600;
+        const secondsInMinute = 60;
+
+        const secondsInHourResult = h * secondsInHour;
+        const secondsInMinuteResult = m * secondsInMinute;
+
+        resultHour.textContent = `Cantidad de segundos: ${secondsInHourResult + secondsInMinuteResult}`;
+
+        console.log(secondsInHourResult, secondsInMinuteResult);
+
+      }
+
+      calculate(hoursValue, minutesValue);
+
+      form.reset();
+
+    }
+
+
+    form.addEventListener('submit', calculateHoursAndSeconds);
+
+  </script>
+</body>
+</html>
